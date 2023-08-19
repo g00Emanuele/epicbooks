@@ -18,6 +18,7 @@ window.onload = () => {
                         <button onClick='addToCart(event)' type="button" class="btn btn-primary addToCart">+</button>
                         <button onClick='deleteBook(event)' type="button" class="btn btn-danger">-</button>
                         <span class="card-text">${book.asin}</span>
+                        <p class="card-text"><a href="./details.html?q=${book.asin}">View details</a></p>
                     </div>
                 </div>
             </div>`
@@ -54,6 +55,7 @@ function getBooks() {
                         <button onClick='addToCart(event)' type="button" class="btn btn-primary addToCart">+</button>
                         <button onClick='deleteBook(event)' type="button" class="btn btn-danger">-</button>
                         <span class="card-text">${book.asin}</span>
+                        <p class="card-text"><a href="./details.html?q=${book.asin}">View details</a></p>
                     </div>
                 </div>
             </div>`
@@ -80,12 +82,10 @@ const addToCart = (e) => {
 
 function svuotaCart(){
     const carrello = document.getElementById('carrello')
-    carrello.innerHTML = ' '
-    const button = document.querySelector('.addToCart')
-    console.log(button)
-    for(i = 0; i < button.length; i++){
-        let a = button[i]
-        a.classList.remove('bg-success')
+    carrello.innerHTML = ''
+    const card = document.getElementsByClassName('card-body')
+    for(let i = 0; i < card.length; i++){
+        card[i].classList.remove('bg-success')
     }
 }
 
